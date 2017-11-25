@@ -92,7 +92,7 @@ Use search to find needed section.
     * 'fixed-page-footer' - Fixes footer
     * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 -->
-<body class="">
+<body class="container no-menu smart-style-6">
 
 <!-- #HEADER -->
 <header id="header">
