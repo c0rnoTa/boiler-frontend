@@ -28,7 +28,7 @@ data-widget-colorbutton="false"
                         -->
 				<header>
 
-					<h2>Line Chart </h2>
+					<h2>Температуры котла за последний час </h2>
 
 				</header>
 
@@ -227,7 +227,7 @@ data-widget-colorbutton="false"
 				@endforeach
 			],
 		                datasets: [{
-                label: "T_KOTLA",
+                label: "Температура котла",
 		                    data: [
 								@foreach ($alldata as $row)
                                     "{{ $row->val0 }}",
@@ -235,7 +235,7 @@ data-widget-colorbutton="false"
 							],
 
 		                }, {
-                label: "T_OBRATKI",
+                label: "Температура обратки",
 		                    data: [
 								@foreach ($alldata as $row)
                                     "{{ $row->val1 }}",
@@ -256,18 +256,18 @@ data-widget-colorbutton="false"
                     display: true,
 		                        scaleLabel: {
                         show: true,
-		                            labelString: 'Month'
+		                            labelString: 'Время'
 		                        }
 		                    }],
 		                    yAxes: [{
                     display: true,
 		                        scaleLabel: {
                         show: true,
-		                            labelString: 'Value'
+		                            labelString: 'Температура'
 		                        },
 		                        ticks: {
-                        suggestedMin: 0,
-		                            suggestedMax: 100,
+                        suggestedMin: 43,
+		                            suggestedMax: 45,
 		                        }
 		                    }]
 		                }
