@@ -124,7 +124,12 @@ data-widget-colorbutton="false"
 
 		<!-- a blank row to get started -->
 		<div class="col-sm-12">
-			<!-- your contents here -->
+
+
+
+
+
+
 		</div>
 
 	</div>
@@ -216,14 +221,26 @@ data-widget-colorbutton="false"
     LineConfig = {
         type: 'line',
 		            data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: [
+				@foreach ($alldata as $row)
+						"{{ $row->datetime }}",
+				@endforeach
+			],
 		                datasets: [{
-                label: "My First dataset",
-		                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                label: "T_KOTLA",
+		                    data: [
+								@foreach ($alldata as $row)
+                                    "{{ $row->val0 }}",
+								@endforeach
+							],
 
 		                }, {
-                label: "My Second dataset",
-		                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                label: "T_OBRATKI",
+		                    data: [
+								@foreach ($alldata as $row)
+                                    "{{ $row->val1 }}",
+								@endforeach
+							],
 		                }]
 		            },
 		            options: {
@@ -310,8 +327,10 @@ data-widget-colorbutton="false"
 
 	};
 
+
 	loadScript("js/plugin/moment/moment.min.js", function(){
-        loadScript("js/plugin/chartjs/chart.min.js", pagefunction)});
+	    loadScript("js/plugin/chartjs/chart.min.js", pagefunction)
+	});
 
 	// end pagefunction
 

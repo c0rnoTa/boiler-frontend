@@ -9,7 +9,8 @@ class Gorelka extends Controller
 {
     public function GetData()
     {
-        $alldata = DB::table('gorelkadata')->orderBy('datetime','desc')->limit(1440)->get();
-        return view('dashboard');
+        $alldata = DB::table('gorelkadata')->orderBy('datetime','desc')->limit(60)->get();
+
+        return view('dashboard',compact(['alldata']));
     }
 }
