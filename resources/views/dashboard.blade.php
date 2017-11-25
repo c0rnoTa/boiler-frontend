@@ -1,22 +1,4 @@
 <!-- Bread crumb is created dynamically -->
-<!-- row -->
-<div class="row">
-
-	<!-- col -->
-	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-		<h1 class="page-title txt-color-blueDark">
-
-			<!-- PAGE HEADER -->
-			<i class="fa-fw fa fa-bar-chart-o"></i>
-Graphs
-			<span>>
-Chart.js
-</span>
-		</h1>
-	</div>
-	<!-- end col -->
-</div>
-<!-- end row -->
 
 <!--
 The ID "widget-grid" will start to initialize all widgets below
@@ -27,12 +9,8 @@ The ID "widget-grid" will start to initialize all widgets below
 <!-- widget grid -->
 <section id="widget-grid" class="">
 
-	<!-- row -->
 	<div class="row">
-
-		<!-- NEW WIDGET START -->
-		<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<!-- Widget ID (each widget will need unique ID)-->
 			<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
 				<!-- widget options:
@@ -67,7 +45,7 @@ data-widget-colorbutton="false"
 					<!-- widget content -->
 					<div class="widget-body">
 						<!-- this is what the user will see -->
-						<canvas id="lineChart" height="120"></canvas>
+						<canvas id="lineChart" height="75"></canvas>
 					</div>
 					<!-- end widget content -->
 
@@ -76,150 +54,16 @@ data-widget-colorbutton="false"
 
 			</div>
 			<!-- end widget -->
-
-			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
-				<!-- widget options:
-					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-data-widget-colorbutton="false"
-					data-widget-editbutton="false"
-					data-widget-togglebutton="false"
-					data-widget-deletebutton="false"
-					data-widget-fullscreenbutton="false"
-					data-widget-custombutton="false"
-					data-widget-collapsed="true"
-					data-widget-sortable="false"
-
-                        -->
-				<header>
-
-					<h2>Radar Chart </h2>
-
-				</header>
-
-				<!-- widget div-->
-				<div>
-
-					<!-- widget edit box -->
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-						<input class="form-control" type="text">
-					</div>
-					<!-- end widget edit box -->
-
-					<!-- widget content -->
-					<div class="widget-body">
-
-						<!-- this is what the user will see -->
-						<canvas id="radarChart" height="120"></canvas>
-
-					</div>
-					<!-- end widget content -->
-
-				</div>
-				<!-- end widget div -->
-
-			</div>
-			<!-- end widget -->
-
-			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-3" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
-				<!-- widget options:
-					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-data-widget-colorbutton="false"
-					data-widget-editbutton="false"
-					data-widget-togglebutton="false"
-					data-widget-deletebutton="false"
-					data-widget-fullscreenbutton="false"
-					data-widget-custombutton="false"
-					data-widget-collapsed="true"
-					data-widget-sortable="false"
-
-                        -->
-				<header>
-
-					<h2>Polar Chart </h2>
-
-				</header>
-
-				<!-- widget div-->
-				<div>
-
-					<!-- widget edit box -->
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-						<input class="form-control" type="text">
-					</div>
-					<!-- end widget edit box -->
-
-					<!-- widget content -->
-					<div class="widget-body">
-
-						<!-- this is what the user will see -->
-						<canvas id="polarChart" height="120"></canvas>
-
-					</div>
-					<!-- end widget content -->
-
-				</div>
-				<!-- end widget div -->
-
-			</div>
-			<!-- end widget -->
-
 		</article>
-		<!-- WIDGET END -->
+
+
+	</div>
+
+	<!-- row -->
+	<div class="row">
 
 		<!-- NEW WIDGET START -->
 		<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-
-			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
-				<!-- widget options:
-					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-data-widget-colorbutton="false"
-					data-widget-editbutton="false"
-					data-widget-togglebutton="false"
-					data-widget-deletebutton="false"
-					data-widget-fullscreenbutton="false"
-					data-widget-custombutton="false"
-					data-widget-collapsed="true"
-					data-widget-sortable="false"
-
-                        -->
-				<header>
-
-					<h2>Bar Chart </h2>
-
-				</header>
-
-				<!-- widget div-->
-				<div>
-
-					<!-- widget edit box -->
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-						<input class="form-control" type="text">
-					</div>
-					<!-- end widget edit box -->
-
-					<!-- widget content -->
-					<div class="widget-body">
-
-						<!-- this is what the user will see -->
-						<canvas id="barChart" height="120"></canvas>
-
-					</div>
-					<!-- end widget content -->
-
-				</div>
-				<!-- end widget div -->
-
-			</div>
-			<!-- end widget -->
 
 			<!-- Widget ID (each widget will need unique ID)-->
 			<div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
@@ -257,52 +101,6 @@ data-widget-colorbutton="false"
 
 						<!-- this is what the user will see -->
 						<canvas id="doughnutChart" height="120"></canvas>
-
-					</div>
-					<!-- end widget content -->
-
-				</div>
-				<!-- end widget div -->
-
-			</div>
-			<!-- end widget -->
-
-			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-6" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
-				<!-- widget options:
-					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-data-widget-colorbutton="false"
-					data-widget-editbutton="false"
-					data-widget-togglebutton="false"
-					data-widget-deletebutton="false"
-					data-widget-fullscreenbutton="false"
-					data-widget-custombutton="false"
-					data-widget-collapsed="true"
-					data-widget-sortable="false"
-
-                        -->
-				<header>
-
-					<h2>Pie Chart </h2>
-
-				</header>
-
-				<!-- widget div-->
-				<div>
-
-					<!-- widget edit box -->
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-						<input class="form-control" type="text">
-					</div>
-					<!-- end widget edit box -->
-
-					<!-- widget content -->
-					<div class="widget-body">
-
-						<!-- this is what the user will see -->
-						<canvas id="pieChart" height="120"></canvas>
 
 					</div>
 					<!-- end widget content -->
@@ -393,7 +191,7 @@ data-widget-colorbutton="false"
 	 * });
 	 */
 
-	 var  LineConfig, barChartData, RadarConfig, DoughtnutConfig, PolarConfig, PieConfig;
+	 var  LineConfig, DoughtnutConfig;
 
 	// pagefunction
 
@@ -467,64 +265,6 @@ data-widget-colorbutton="false"
                 });
 
 
-		        // bar chart example
-
-
-		        barChartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-		            datasets: [{
-            label: 'Dataset 1',
-		                backgroundColor: "rgba(220,220,220,0.5)",
-		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-		            }, {
-            label: 'Dataset 2',
-		                backgroundColor: "rgba(151,187,205,0.5)",
-		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-		            }, {
-            label: 'Dataset 3',
-		                backgroundColor: "rgba(151,187,205,0.5)",
-		                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-		            }]
-
-		        };
-
-
-
-		        // radar example
-
-
-		        RadarConfig = {
-        type: 'radar',
-			        data: {
-            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-			            datasets: [{
-                label: "My First dataset",
-			                backgroundColor: "rgba(220,220,220,0.2)",
-			                pointBackgroundColor: "rgba(220,220,220,1)",
-			                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-			            }, {
-                label: "My Second dataset",
-			                backgroundColor: "rgba(151,187,205,0.2)",
-			                pointBackgroundColor: "rgba(151,187,205,1)",
-			                hoverPointBackgroundColor: "#fff",
-			                pointHighlightStroke: "rgba(151,187,205,1)",
-			                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-			            },]
-			        },
-			        options: {
-            legend: {
-                position: 'top',
-			            },
-
-            scale: {
-                reverse: false,
-			              ticks: {
-                    beginAtZero: true
-			              }
-			            }
-        }
-			    };
-
 
 			    // doughnut example
 
@@ -565,106 +305,8 @@ data-widget-colorbutton="false"
 			    };
 
 
-			    // polar chart example
-
-
-			    PolarConfig = {
-        data: {
-            datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                ],
-			                backgroundColor: [
-                    "#F7464A",
-                    "#46BFBD",
-                    "#FDB45C",
-                    "#949FB1",
-                    "#4D5360",
-                ],
-			                label: 'My dataset' // for legend
-			            }],
-			            labels: [
-                "Red",
-                "Green",
-                "Yellow",
-                "Grey",
-                "Dark Grey"
-            ]
-			        },
-        options: {
-            responsive: true,
-			            legend: {
-                position: 'top',
-			            },
-			            title: {
-                display: true,
-			                text: 'Our Favorite Dataset'
-			            },
-			            scale: {
-                ticks: {
-                    beginAtZero: true
-			              },
-                reverse: false
-			            },
-			            animateRotate:false
-			        }
-    };
-
-
-			    // pie chart example
-			    PieConfig = {
-        type: 'pie',
-			        data: {
-            datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                ],
-			                backgroundColor: [
-                    "#F7464A",
-                    "#46BFBD",
-                    "#FDB45C",
-                    "#949FB1",
-                    "#4D5360",
-                ],
-			            }],
-			            labels: [
-                "Red",
-                "Green",
-                "Yellow",
-                "Grey",
-                "Dark Grey"
-            ]
-			        },
-			        options: {
-            responsive: true
-			        }
-			    };
-
-
-
-
-
-	            myLine = new Chart(document.getElementById("lineChart"), LineConfig);
-	            myBar = new Chart(document.getElementById("barChart"), {
-        type: 'bar',
-	                data: barChartData,
-	                options: {
-            responsive: true,
-	                }
-	            });
-	            myRadar = new Chart(document.getElementById("radarChart"), RadarConfig);
-    			myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
-    			myPolarArea = Chart.PolarArea(document.getElementById("polarChart"), PolarConfig);
-    			myPie = new Chart(document.getElementById("pieChart"), PieConfig);
-
+		        myLine = new Chart(document.getElementById("lineChart"), LineConfig);
+		        myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
 
 	};
 
@@ -683,20 +325,8 @@ data-widget-colorbutton="false"
     myLine.destroy();
     LineConfig=null;
 
-    myBar.destroy();
-    barChartData=null;
-
-    myRadar.destroy();
-    RadarConfig=null;
-
     myDoughnut.destroy();
     DoughtnutConfig=null;
-
-    myPolarArea.destroy();
-    PolarConfig=null;
-
-    myPie.destroy();
-    PieConfig=null;
 
     if (debugState){
         root.console.log("✔ Chart.js charts destroyed");
