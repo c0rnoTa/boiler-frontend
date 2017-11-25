@@ -10,6 +10,6 @@ class Gorelka extends Controller
     public function GetData()
     {
         $alldata = DB::table('gorelkadata')->orderBy('datetime','desc')->limit(1440)->get();
-        return $alldata;
+        return view('dashboard');
     }
 }

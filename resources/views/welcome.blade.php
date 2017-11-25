@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
-    <title> SmartAdmin (AJAX)</title>
+    <title> Пелетная горелка Dashboard</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
 
     <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
 
@@ -130,7 +131,7 @@ Use search to find needed section.
 
         <ul>
             <li class="">
-                <a href="ajax/dashboard.html" title="blank_"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Blank</span></a>
+                <a href="ajax/dashboard" title="blank_"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Blank</span></a>
             </li>
         </ul>
     </nav>
@@ -205,6 +206,10 @@ Use search to find needed section.
 <!-- BOOTSTRAP JS -->
 <script src="js/bootstrap/bootstrap.min.js"></script>
 
+<!-- JARVIS WIDGETS -->
+<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+
 <!--[if IE 8]>
 <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 <![endif]-->
@@ -212,20 +217,6 @@ Use search to find needed section.
 <!-- MAIN APP JS FILE -->
 <script src="js/app.seed.js"></script>
 
-<!-- Your GOOGLE ANALYTICS CODE Below -->
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
 
 </body>
 
