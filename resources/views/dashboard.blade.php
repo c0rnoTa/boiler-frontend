@@ -220,66 +220,73 @@ data-widget-colorbutton="false"
 
     LineConfig = {
         type: 'line',
-		            data: {
+		data: {
             labels: [
-				@foreach ($alldata as $row)
-						"{{ $row->datetime }}",
+				@foreach ($timeArray as $timePin)
+						"{{ $timePin }}",
 				@endforeach
 			],
-		                datasets: [{
+			datasets: [{
                 label: "Температура котла",
-		                    data: [
-								@foreach ($alldata as $row)
-                                    "{{ $row->val0 }}",
-								@endforeach
-							],
-
-		                }, {
+                backgroundColor: 'rgba(234,116,16,0.5)',
+                pointBackgroundColor: 'rgba(64,170,242,0.5)',
+				data: [
+				    @foreach ($alldata as $row)
+						"{{ $row->val0 }}",
+					@endforeach
+				],
+			}, {
                 label: "Температура обратки",
-		                    data: [
-								@foreach ($alldata as $row)
-                                    "{{ $row->val1 }}",
-								@endforeach
-							],
-		                }]
-		            },
-		            options: {
+                backgroundColor: 'rgba(22,96,142,0.5)',
+                pointBackgroundColor: 'rgba(57,135,247,0.5)',
+				data: [
+					@foreach ($alldata as $row)
+						"{{ $row->val1 }}",
+					@endforeach
+				]
+			}]
+		},
+		options: {
             responsive: true,
-		                tooltips: {
+			tooltips: {
                 mode: 'label'
-		                },
-		                hover: {
+			},
+			hover: {
                 mode: 'dataset'
-		                },
-		                scales: {
+			},
+			scales: {
                 xAxes: [{
                     display: true,
-		                        scaleLabel: {
+					scaleLabel: {
                         show: true,
-		                            labelString: 'Время'
-		                        }
-		                    }],
-		                    yAxes: [{
+						labelString: 'Время'
+                    }
+                }],
+				yAxes: [{
                     display: true,
-		                        scaleLabel: {
+					scaleLabel: {
                         show: true,
-		                            labelString: 'Температура'
-		                        },
-		                        ticks: {
-                        suggestedMin: 43,
-		                            suggestedMax: 45,
-		                        }
-		                    }]
-		                }
-		            }
-		        };
-		        $.each(LineConfig.data.datasets, function(i, dataset) {
-                    dataset.borderColor = 'rgba(0,0,0,0.15)';
-                    dataset.backgroundColor = randomColor(0.5);
-                    dataset.pointBorderColor = 'rgba(0,0,0,0.15)';
-                    dataset.pointBackgroundColor = randomColor(0.5);
-                    dataset.pointBorderWidth = 1;
-                });
+						labelString: 'Температура'
+					},
+					ticks: {
+                        suggestedMin: {{ $suggested['min'] }},
+						suggestedMax: {{ $suggested['max'] }}
+					}
+                }]
+            }
+        }
+    };
+
+
+
+        $.each(LineConfig.data.datasets, function(i, dataset) {
+            dataset.borderColor = 'rgba(0,0,0,0.15)';
+            //dataset.backgroundColor = randomColor(0.5);
+            dataset.pointBorderColor = 'rgba(0,0,0,0.15)';
+            //dataset.pointBackgroundColor = randomColor(0.5);
+            dataset.pointBorderWidth = 1;
+        });
+
 
 
 

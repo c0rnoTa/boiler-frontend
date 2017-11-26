@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
-    <title> Пелетная горелка Dashboard</title>
+    <title> Пеллетная горелка Dashboard</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -93,7 +93,7 @@ Use search to find needed section.
     * 'fixed-page-footer' - Fixes footer
     * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 -->
-<body class="container no-menu smart-style-6">
+<body class="no-menu smart-style-6">
 
 <!-- #NAVIGATION -->
 <!-- Left panel : Navigation area -->
@@ -131,7 +131,7 @@ Use search to find needed section.
 
         <ul>
             <li class="">
-                <a href="ajax/dashboard" title="blank_"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Blank</span></a>
+                <a href="ajax/dashboard" title="blank_"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
             </li>
         </ul>
     </nav>
