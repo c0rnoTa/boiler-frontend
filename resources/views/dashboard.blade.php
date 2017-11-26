@@ -28,7 +28,7 @@ data-widget-colorbutton="false"
                         -->
 				<header>
 
-					<h2>Температуры котла за последний час </h2>
+					<h2>Температуры котла за последние {{ $minutes }} минут </h2>
 
 				</header>
 
@@ -45,7 +45,7 @@ data-widget-colorbutton="false"
 					<!-- widget content -->
 					<div class="widget-body">
 						<!-- this is what the user will see -->
-						<canvas id="lineChart" height="75"></canvas>
+						<canvas id="lineChart" height="50"></canvas>
 					</div>
 					<!-- end widget content -->
 
@@ -54,6 +54,51 @@ data-widget-colorbutton="false"
 
 			</div>
 			<!-- end widget -->
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+				<!-- widget options:
+					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+data-widget-colorbutton="false"
+					data-widget-editbutton="false"
+					data-widget-togglebutton="false"
+					data-widget-deletebutton="false"
+					data-widget-fullscreenbutton="false"
+					data-widget-custombutton="false"
+					data-widget-collapsed="true"
+					data-widget-sortable="false"
+
+                        -->
+				<header>
+
+					<h2>Мощность котла, кВт </h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+						<input class="form-control" type="text">
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body">
+						<!-- this is what the user will see -->
+						<canvas id="lineChart2" height="50"></canvas>
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
 		</article>
 
 
@@ -63,7 +108,7 @@ data-widget-colorbutton="false"
 	<div class="row">
 
 		<!-- NEW WIDGET START -->
-		<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+		<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
 			<!-- Widget ID (each widget will need unique ID)-->
 			<div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
@@ -113,6 +158,58 @@ data-widget-colorbutton="false"
 
 		</article>
 		<!-- WIDGET END -->
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-5" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+				<!-- widget options:
+					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+data-widget-colorbutton="false"
+					data-widget-editbutton="false"
+					data-widget-togglebutton="false"
+					data-widget-deletebutton="false"
+					data-widget-fullscreenbutton="false"
+					data-widget-custombutton="false"
+					data-widget-collapsed="true"
+					data-widget-sortable="false"
+
+                        -->
+				<header>
+
+					<h2>Суммарные показатели за {{ $minutes }} минут </h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+						<input class="form-control" type="text">
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body">
+
+						Расход: {{ $rashod }} кг.
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+		</article>
+		<!-- WIDGET END -->
+
 
 	</div>
 
@@ -196,7 +293,7 @@ data-widget-colorbutton="false"
 	 * });
 	 */
 
-	 var  LineConfig, DoughtnutConfig;
+	 var  LineConfig, LineConfig2, DoughtnutConfig;
 
 	// pagefunction
 
@@ -285,6 +382,64 @@ data-widget-colorbutton="false"
 		dataset.pointBorderWidth = 1;
     });
 
+
+        LineConfig2 = {
+            type: 'line',
+            data: {
+                labels: [
+					@foreach ($timeArray as $timePin)
+                        "{{ $timePin }}",
+					@endforeach
+                ],
+                datasets: [{
+                    label: "Мощность котла",
+                    backgroundColor: "rgba(0,203,104,0.5)",
+                    pointBackgroundColor: "rgba(148,47,96,0.5)",
+                    pointBorderWidth: 1,
+                    pointBorderColor: 'rgba(0,0,0,0.15)',
+                    borderColor: 'rgba(0,0,0,0.15)',
+                    data: [
+						@foreach ($alldata as $row)
+                            "{{ $row->val2 }}",
+						@endforeach
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'label'
+                },
+                hover: {
+                    mode: 'dataset'
+                },
+                legend: {
+                    display: false,
+                    position: 'top'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            show: true,
+                            labelString: 'Время'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            show: true,
+                            labelString: 'Мощность'
+                        },
+                        ticks: {
+                            suggestedMin: 4,
+                            suggestedMax: 12
+                        }
+                    }]
+                }
+            }
+        };
+
     DoughtnutConfig = {
         type: 'doughnut',
 		data: {
@@ -318,6 +473,7 @@ data-widget-colorbutton="false"
     };
 
     myLine = new Chart(document.getElementById("lineChart"), LineConfig);
+    myLine2 = new Chart(document.getElementById("lineChart2"), LineConfig2);
     myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
 
 	}; // end of page load function

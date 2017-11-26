@@ -9,11 +9,16 @@ class Gorelka extends Controller
 {
     public function GetData()
     {
-        $alldata = DB::table('gorelkadata')->orderBy('datetime','desc')->limit(60)->get()->reverse();
+
+        $minutes = 90;
+
+        $alldata = DB::table('gorelkadata')->orderBy('datetime','desc')->limit($minutes)->get()->reverse();
+
         $suggested = [
             'min' => 999,
             'max' => -999
         ];
+
         // Режимы работы котла
         $regim = [
             [
@@ -51,6 +56,7 @@ class Gorelka extends Controller
             ]
         ];
 
+        $rashod = 0;
 
         foreach ($alldata as $dataRow) {
             // Format time
@@ -70,12 +76,15 @@ class Gorelka extends Controller
             // Work status
             $regim[$dataRow->val5]['value'] += 1;
 
+            // Расчет суммарного расхода
+            $rashod += round(( $dataRow->val3 / 600 ),2);
+
         }
         $suggested['max'] = intval($suggested['max']) + 1;
         foreach ($regim as $i => $value) {
             if ($value['value'] == 0) unset($regim[$i]);
         }
 
-        return view('dashboard',compact(['alldata','timeArray','suggested','regim']));
+        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod']));
     }
 }
