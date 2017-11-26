@@ -82,7 +82,7 @@ data-widget-colorbutton="false"
                         -->
 				<header>
 
-					<h2>Doughnut Chart </h2>
+					<h2>Режимы работы </h2>
 
 				</header>
 
@@ -277,62 +277,50 @@ data-widget-colorbutton="false"
         }
     };
 
+    $.each(LineConfig.data.datasets, function(i, dataset) {
+        dataset.borderColor = 'rgba(0,0,0,0.15)';
+        //dataset.backgroundColor = randomColor(0.5);
+		dataset.pointBorderColor = 'rgba(0,0,0,0.15)';
+		// dataset.pointBackgroundColor = randomColor(0.5);
+		dataset.pointBorderWidth = 1;
+    });
 
-
-        $.each(LineConfig.data.datasets, function(i, dataset) {
-            dataset.borderColor = 'rgba(0,0,0,0.15)';
-            //dataset.backgroundColor = randomColor(0.5);
-            dataset.pointBorderColor = 'rgba(0,0,0,0.15)';
-            //dataset.pointBackgroundColor = randomColor(0.5);
-            dataset.pointBorderWidth = 1;
-        });
-
-
-
-
-			    // doughnut example
-
-			    DoughtnutConfig = {
+    DoughtnutConfig = {
         type: 'doughnut',
-			        data: {
+		data: {
             datasets: [{
                 data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
+                    @foreach($regim as $work)
+					{{ $work['value'] }},
+					@endforeach
                 ],
-			                backgroundColor: [
-                    "#F7464A",
-                    "#46BFBD",
-                    "#FDB45C",
-                    "#949FB1",
-                    "#4D5360",
-                ],
-			                label: 'Dataset 1'
-			            }],
-			            labels: [
-                "Red",
-                "Green",
-                "Yellow",
-                "Grey",
-                "Dark Grey"
-            ]
-			        },
-			        options: {
+				backgroundColor: [
+                    @foreach($regim as $work)
+					"{{ $work['color'] }}",
+					@endforeach
+				],
+				label: 'Режимы работы'
+			}],
+
+			labels: [
+				@foreach($regim as $work)
+				"{{ $work['name'] }}",
+				@endforeach
+			]
+		},
+		options: {
             responsive: true,
-			            legend: {
-                position: 'top',
-			            }
-			        }
-			    };
+			legend: {
+                display: true,
+                position: 'top'
+			}
+        }
+    };
 
+    myLine = new Chart(document.getElementById("lineChart"), LineConfig);
+    myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
 
-		        myLine = new Chart(document.getElementById("lineChart"), LineConfig);
-		        myDoughnut = new Chart(document.getElementById("doughnutChart"), DoughtnutConfig);
-
-	};
+	}; // end of page load function
 
 
 	loadScript("js/plugin/moment/moment.min.js", function(){
