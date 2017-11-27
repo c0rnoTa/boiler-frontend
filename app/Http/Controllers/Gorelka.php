@@ -59,6 +59,9 @@ class Gorelka extends Controller
         $rashod = 0;
 
         foreach ($alldata as $dataRow) {
+            // Skip value counting if there was an error
+            if ($dataRow->error == '500') continue;
+
             // Format time
             $timeArray[] = substr($dataRow->datetime,11,5);
 
@@ -78,7 +81,6 @@ class Gorelka extends Controller
 
             // Расчет суммарного расхода
             $rashod += round(( $dataRow->val3 / 600 ),2);
-
         }
         $suggested['max'] = intval($suggested['max']) + 1;
         foreach ($regim as $i => $value) {
