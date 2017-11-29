@@ -10,7 +10,15 @@ class Gorelka extends Controller
     public function GetData()
     {
 
-        $minutes = 90;
+        $minutes = 180;
+
+        // TODO: rename var as weakly data
+        $boilerPower = [
+            'dateStart' => '2017-11-27 00:00:00',
+            'min' => '14.0',
+            'duration' => 0,
+            'rashod' => 0
+        ];
 
         $alldata = DB::table('gorelkadata')->orderBy('datetime','desc')->limit($minutes)->get()->reverse();
 
@@ -87,6 +95,21 @@ class Gorelka extends Controller
             if ($value['value'] == 0) unset($regim[$i]);
         }
 
-        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod']));
+        // Рассчет суммарных показателей с начала недели
+        $powerData = DB::table('gorelkadata')->select('val2','val3','error')->where('datetime','>',$boilerPower['dateStart'])->get();
+        foreach ($powerData as $value) {
+            // Skip value counting if there was an error
+            if ($value->error == '500') continue;
+
+            if ($value->val2 > $boilerPower['min']) {
+                $boilerPower['duration'] += 1;
+            }
+
+            $boilerPower['rashod'] += $value->val3 / 600 ;
+        }
+        $boilerPower['rashod'] = round($boilerPower['rashod'],2);
+        $boilerPower['duration'] = intval($boilerPower['duration']/60) . 'ч' . $boilerPower['duration']%60 . 'мин';
+
+        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod','boilerPower']));
     }
 }

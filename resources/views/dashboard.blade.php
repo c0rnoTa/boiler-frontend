@@ -60,7 +60,7 @@ The ID "widget-grid" will start to initialize all widgets below
 	<div class="row">
 		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+			<div class="jarviswidget jarviswidget-color-blue" id="wid-id-0" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
 				<!-- widget options:
 					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -104,7 +104,7 @@ data-widget-colorbutton="false"
 			<!-- end widget -->
 
 			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+			<div class="jarviswidget jarviswidget-color-blue" id="wid-id-1" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
 				<!-- widget options:
 					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -159,7 +159,7 @@ data-widget-colorbutton="false"
 		<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
 			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+			<div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
 				<!-- widget options:
 					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -208,10 +208,10 @@ data-widget-colorbutton="false"
 		<!-- WIDGET END -->
 
 		<!-- NEW WIDGET START -->
-		<article class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+		<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
 			<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-5" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+			<div class="jarviswidget jarviswidget-color-blue" id="wid-id-5" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
 				<!-- widget options:
 					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -227,7 +227,7 @@ data-widget-colorbutton="false"
                         -->
 				<header>
 
-					<h2>Суммарные показатели за {{ $minutes }} минут </h2>
+					<h2>Суммарные показатели</h2>
 
 				</header>
 
@@ -242,10 +242,25 @@ data-widget-colorbutton="false"
 					<!-- end widget edit box -->
 
 					<!-- widget content -->
-					<div class="widget-body">
-
-						Расход: {{ $rashod }} кг.
-
+					<div class="widget-body no-padding">
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped">
+								<tbody>
+								<tr>
+									<td>Расход пеллет за {{ $minutes }} минут</td>
+									<td>{{ $rashod }} кг</td>
+								</tr>
+								<tr>
+									<td>Расход пеллет с {{ $boilerPower['dateStart'] }}</td>
+									<td>{{ $boilerPower['rashod'] }} кг</td>
+								</tr>
+								<tr>
+									<td>Длительность циклов больше {{ $boilerPower['min'] }} кВт<br>с {{ $boilerPower['dateStart'] }}</td>
+									<td>{{ $boilerPower['duration'] }}</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<!-- end widget content -->
 
