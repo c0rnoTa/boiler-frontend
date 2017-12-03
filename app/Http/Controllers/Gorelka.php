@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Gorelka extends Controller
 {
+    // TODO: оставить только получение данных, а отрисовку вынести в отдельный контроллер
     public function GetData()
     {
 
@@ -14,7 +15,7 @@ class Gorelka extends Controller
 
         // TODO: rename var as weakly data
         $boilerPower = [
-            'dateStart' => '2017-11-27 00:00:00',
+            'dateStart' => '2017-12-03 11:00:00',
             'min' => '14.0',
             'duration' => 0,
             'rashod' => 0
@@ -84,32 +85,42 @@ class Gorelka extends Controller
             if ($suggested['min'] > $rowMin) $suggested['min'] = $rowMin;
             if ($suggested['max'] < $rowMax) $suggested['max'] = $rowMax;
 
-            // Work status
-            $regim[$dataRow->val5]['value'] += 1;
-
             // Расчет суммарного расхода
             $rashod += round(( $dataRow->val3 / 600 ),2);
         }
-        $suggested['max'] = intval($suggested['max']) + 1;
-        foreach ($regim as $i => $value) {
-            if ($value['value'] == 0) unset($regim[$i]);
-        }
 
         // Рассчет суммарных показателей с начала недели
-        $powerData = DB::table('gorelkadata')->select('val2','val3','error')->where('datetime','>',$boilerPower['dateStart'])->get();
+        $powerData = DB::table('gorelkadata')->select('val2','val3','val5','error')->where('datetime','>',$boilerPower['dateStart'])->get();
         foreach ($powerData as $value) {
             // Skip value counting if there was an error
             if ($value->error == '500') continue;
 
+            // Время работы больше чем заданная мощность
             if ($value->val2 > $boilerPower['min']) {
                 $boilerPower['duration'] += 1;
             }
+
+            // Work status
+            $regim[$value->val5]['value'] += 1;
 
             $boilerPower['rashod'] += $value->val3 / 600 ;
         }
         $boilerPower['rashod'] = round($boilerPower['rashod'],2);
         $boilerPower['duration'] = intval($boilerPower['duration']/60) . 'ч' . $boilerPower['duration']%60 . 'мин';
 
-        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod','boilerPower']));
+        foreach ($regim as $i => $value) {
+            if ($value['value'] == 0) unset($regim[$i]);
+        }
+
+        $tempData = Datchik::GetLastData($minutes);
+        foreach ($tempData as $i => $value) {
+            if ($suggested['min'] > $value->temp) $suggested['min'] = $value->temp;
+            if ($suggested['max'] < $value->temp) $suggested['max'] = $value->temp;
+        }
+
+        $suggested['max'] = intval($suggested['max']) + 1;
+        $suggested['min'] = intval($suggested['min']) - 1;
+
+        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod','boilerPower','tempData']));
     }
 }

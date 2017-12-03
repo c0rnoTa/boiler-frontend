@@ -175,7 +175,7 @@ data-widget-colorbutton="false"
                         -->
 				<header>
 
-					<h2>Режимы работы </h2>
+					<h2>Режимы работы c {{ $boilerPower['dateStart'] }} </h2>
 
 				</header>
 
@@ -388,8 +388,8 @@ data-widget-colorbutton="false"
 			],
 			datasets: [{
                 label: "Температура котла",
-                backgroundColor: 'rgba(234,116,16,0.5)',
-                pointBackgroundColor: 'rgba(64,170,242,0.5)',
+                backgroundColor: 'rgba(220,104,83,0.5)', //'rgba(234,116,16,0.5)',
+                pointBackgroundColor: 'rgba(255,101,99,0.5)', //'rgba(64,170,242,0.5)',
 				data: [
 				    @foreach ($alldata as $row)
 						"{{ $row->val0 }}",
@@ -404,7 +404,16 @@ data-widget-colorbutton="false"
 						"{{ $row->val1 }}",
 					@endforeach
 				]
-			}]
+			}, {
+                label: "Температура в комнате",
+                backgroundColor: 'rgba(138,242,204,0.5)',
+                pointBackgroundColor: 'rgba(188,239,220,0.5)' ,
+                data: [
+					@foreach ($tempData as $row)
+                        "{{ $row->temp }}",
+					@endforeach
+                ]
+            }]
 		},
 		options: {
             responsive: true,
