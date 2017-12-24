@@ -15,7 +15,7 @@ class Gorelka extends Controller
 
         // TODO: rename var as weakly data
         $boilerPower = [
-            'dateStart' => '2017-12-03 11:00:00',
+            'dateStart' => '2017-12-11 00:00:00',
             'min' => '14.0',
             'duration' => 0,
             'rashod' => 0
