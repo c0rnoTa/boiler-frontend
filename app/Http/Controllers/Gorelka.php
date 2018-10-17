@@ -11,11 +11,11 @@ class Gorelka extends Controller
     public function GetData()
     {
 
-        $minutes = 180;
+        $minutes = 60;
 
         // TODO: rename var as weakly data
         $boilerPower = [
-            'dateStart' => '2017-12-11 00:00:00',
+            'dateStart' => '2018-06-01 00:00:00',
             'min' => '14.0',
             'duration' => 0,
             'rashod' => 0
@@ -69,8 +69,13 @@ class Gorelka extends Controller
 
         foreach ($alldata as $dataRow) {
             // Skip value counting if there was an error
-            if ($dataRow->error == '500') continue;
-
+            if ($dataRow->error == '500') {
+		$dataRow->val0 = 0;
+		$dataRow->val1 = 0;
+		$dataRow->val2 = 0;
+		$dataRow->val3 = 0;
+		//continue;
+	    }
             // Format time
             $timeArray[] = substr($dataRow->datetime,11,5);
 
@@ -105,15 +110,21 @@ class Gorelka extends Controller
 
             $boilerPower['rashod'] += $value->val3 / 600 ;
         }
-        $boilerPower['rashod'] = round($boilerPower['rashod'],2);
-        $boilerPower['duration'] = intval($boilerPower['duration']/60) . 'ч' . $boilerPower['duration']%60 . 'мин';
+        $boilerPower['rashod'] = 0; //round($boilerPower['rashod'],2);
+        $boilerPower['duration'] = 0; //intval($boilerPower['duration']/60) . 'ч' . $boilerPower['duration']%60 . 'мин';
 
         foreach ($regim as $i => $value) {
             if ($value['value'] == 0) unset($regim[$i]);
         }
 
-        $tempData = Datchik::GetLastData($minutes);
+        $tempData = Datchik::GetLastData($minutes, '28-0517b18303ff');
         foreach ($tempData as $i => $value) {
+            if ($suggested['min'] > $value->temp) $suggested['min'] = $value->temp;
+            if ($suggested['max'] < $value->temp) $suggested['max'] = $value->temp;
+        }
+
+        $tempData2 = Datchik::GetLastData($minutes, '10-0008028169fd');
+        foreach ($tempData2 as $i => $value) {
             if ($suggested['min'] > $value->temp) $suggested['min'] = $value->temp;
             if ($suggested['max'] < $value->temp) $suggested['max'] = $value->temp;
         }
@@ -121,6 +132,6 @@ class Gorelka extends Controller
         $suggested['max'] = intval($suggested['max']) + 1;
         $suggested['min'] = intval($suggested['min']) - 1;
 
-        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod','boilerPower','tempData']));
+        return view('dashboard',compact(['alldata','timeArray','suggested','regim','minutes','rashod','boilerPower','tempData','tempData2']));
     }
 }

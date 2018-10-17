@@ -392,7 +392,9 @@ data-widget-colorbutton="false"
                 pointBackgroundColor: 'rgba(255,101,99,0.5)', //'rgba(64,170,242,0.5)',
 				data: [
 				    @foreach ($alldata as $row)
-						"{{ $row->val0 }}",
+                                                @if($row->val0 == '') "0",
+						@else "{{ $row->val0 }}",
+                                                @endif
 					@endforeach
 				],
 			}, {
@@ -401,16 +403,31 @@ data-widget-colorbutton="false"
                 pointBackgroundColor: 'rgba(57,135,247,0.5)',
 				data: [
 					@foreach ($alldata as $row)
-						"{{ $row->val1 }}",
+                                                @if($row->val1 == '') "0",
+                                                @else "{{ $row->val1 }}",
+                                                @endif
 					@endforeach
 				]
-			}, {
-                label: "Температура в комнате",
-                backgroundColor: 'rgba(138,242,204,0.5)',
-                pointBackgroundColor: 'rgba(188,239,220,0.5)' ,
+			},{
+                label: "Температура комнаты 1",
+                backgroundColor: 'rgba(22,96,142,0.5)',
+                pointBackgroundColor: 'rgba(57,135,247,0.5)',
+                                data: [
+                                        @foreach ($tempData2 as $row)
+                                                @if($row->temp == '') "0",
+                                                @else "{{ $row->temp }}",
+                                                @endif
+                                        @endforeach
+                                ]
+                        }, {
+                label: "Температура комнаты 2",
+                backgroundColor: randomColor(0.5),
+                pointBackgroundColor: randomColor(0.5),
                 data: [
 					@foreach ($tempData as $row)
-                        "{{ $row->temp }}",
+                                                @if($row->temp == '') "0",
+                                                @else "{{ $row->temp }}",
+                                                @endif
 					@endforeach
                 ]
             }]

@@ -11,7 +11,7 @@ class Datchik extends Controller
      * @param string $from Дата и время, с которой получать занчения
      * @return mixed Массив значений tempdata
      */
-    public static function GetLastData ($from = null) {
+    public static function GetLastData ($from = null, $id = null) {
 
         if(is_null($from)) {
             // $from = date('Y-m-d 00:00:00');
@@ -19,7 +19,11 @@ class Datchik extends Controller
         }
 
         //$tempData = DB::table('tempdata')->select('temp')->where('datetime','>',$from)->get();
-        $tempData = DB::table('tempdata')->select('temp')->orderBy('datetime','desc')->limit($from)->get()->reverse();
+        if(is_null($id)) {
+            $tempData = DB::table('tempdata')->select('temp')->orderBy('datetime','desc')->limit($from)->get()->reverse();
+        } else {
+            $tempData = DB::table('tempdata')->select('temp')->where('id',$id)->orderBy('datetime','desc')->limit($from)->get()->reverse();
+        }
         // Convert object to array
         //$tempData = json_decode(json_encode($tempData), true);
 
