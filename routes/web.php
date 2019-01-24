@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/gorelka','Gorelka@GetData');
 
 Route::get('/ajax/dashboard','Gorelka@GetData');
+
+Route::get('/dashboard','Dashboard@index');

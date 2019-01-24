@@ -67,7 +67,15 @@ class Gorelka extends Controller
 
         $rashod = 0;
 
+	$missingPoint = 0;
+        $maxPointsToPlot = 60;
+        $pointsStep = $minutes/$maxPointsToPlot;
         foreach ($alldata as $dataRow) {
+            if ( $missingPoint == $pointsStep ) {
+                $missingPoint = 0;
+            }
+         
+            if ( $
             // Skip value counting if there was an error
             if ($dataRow->error == '500') {
 		$dataRow->val0 = 0;
@@ -92,6 +100,7 @@ class Gorelka extends Controller
 
             // Расчет суммарного расхода
             $rashod += round(( $dataRow->val3 / 600 ),2);
+            $missingPoint++;
         }
 
         // Рассчет суммарных показателей с начала недели

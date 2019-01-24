@@ -420,7 +420,7 @@ data-widget-colorbutton="false"
                                         @endforeach
                                 ]
                         }, {
-                label: "Температура комнаты 2",
+                label: "Температура батареи",
                 backgroundColor: randomColor(0.5),
                 pointBackgroundColor: randomColor(0.5),
                 data: [
